@@ -1,65 +1,138 @@
-/* components/screens/Dashboard/Dashboard.css */
-.dashboard-container {
-  text-align: center;
+/* General Container Styles */
+.container-main-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-height: 100vh; 
+  color: white;
+  /*
+   Ensure container takes full height */
 }
 
-.dashboard-image {
-  max-width: 100%;
-  height: auto;
-  margin-top: 20px;
-}
-
-.titles-main-page {
-  text-align: center;
-}
-
-.iframe-main-page {
-  padding: 0 15rem;
-  margin-top: 1rem;
-}
-
-.CenterBtn {
+/* Popup Styles */
+.welcome-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
-}
-.address-text {
-  font-size: 24px;
-}
-.separator {
-  width: 100%;
-  border-top: 2px solid #ddf0f3;
-  margin: 20px 0;
-}
-.address-input {
-  margin: 0.5rem 1rem;
-  border-radius: 1rem;
-  height: 40px;
-  padding: 1rem;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 1000; /* Ensure popup is above all other content */
 }
 
+.welcome-popup-content {
+  background: #fff; /* White background */
+  color: #000; /* Black text color */
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Dashboard Content */
+.dashboard-content {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 50px); /* Adjust height to fit the viewport minus any other elements */
+}
+
+/* Flexbox layout for left-side and right-side */
+.left-side {
+  flex: 0 0 25%; /* 25% of the container width */
+  padding: 1rem;
+  box-sizing: border-box;
+  border-right: 2px solid #d1d1d1; /* Vertical separator */
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  align-items: flex-start; /* Align children to start of the container */
+  color: black; /* Text color in the left side */
+}
+
+/* Ensure the form and button containers take full width of the left-side */
+.form-container {
+  width: 100%;
+}
+
+.right-side {
+  flex: 0 0 75%; /* 75% of the container width */
+  padding: 1rem;
+  box-sizing: border-box;
+  color: black; /* Text color in the right side */
+}
+
+/* Separator between inputs and map */
+.separator {
+  width: 100%;
+  height: 1px;
+  background-color: #d1d1d1;
+  margin: 1rem 0; /* Space around the separator */
+}
+
+/* Form Styles */
+.form-grid {
+  display: flex;
+  flex-direction: column; /* Stack inputs vertically */
+  gap: 10px; /* Space between inputs */
+  width: 100%; /* Ensure form takes up full width */
+  color: black; /* Text color in the form */
+}
+
+.address-input {
+  margin: 0;
+  border-radius: 0.5rem; /* Slightly rounded corners for a better look */
+  height: 35px;
+  padding: 0.5rem;
+  width: 100%; /* Full width for inputs */
+}
+
+/* Button Styles */
 .resetBtn {
-  background-color: #ffffff;
-  border-radius: 1rem;
-  padding: 0.3rem 3.3rem;
+  background-color: black; /* Button background color */
+  color: white; /* Button text color */
+  border-radius: 0.5rem;
+  padding: 0.3rem 1.65rem; /* Adjust padding to make button narrower */
   border: 1px solid rgb(163, 163, 163);
   cursor: pointer;
   font-size: 1.2rem;
   box-shadow: 0px 3px 2px #5a5a5a;
+  width: 70%; /* Full width of the form container */
+  margin-bottom: 10px; /* Space between buttons */
+  transition: background-color 0.3s ease; /* Smooth transition for color change */
 }
 
-@media (max-width: 1000px) {
-  .iframe-main-page {
-    padding: 0 1rem;
+.resetBtn:hover {
+  background-color: #28a745; /* Green color on hover */
+}
+
+/* Centered button */
+.CenterBtn {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  gap: 10px; /* Space between buttons */
+  width: 100%; /* Ensure buttons take full width */
+}
+
+/* Address and Location Lists */
+.address-display, .location-list {
+  margin-top: 1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .dashboard-content {
+    flex-direction: column;
   }
 
-  .form-grid {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(
-      2,
-      1fr
-    ); /* This creates 2 columns of equal width */
-    gap: 10px; /* Optional: add some space between the grid items */
+  .left-side, .right-side {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .resetBtn {
+    width: 80%; /* Full width on small screens */
   }
 }
